@@ -25,7 +25,7 @@ Installs and configures the ThousandEyes agent and services.
 
 Installs and configures the ThousandEyes browserbot agent and services.
 
-``thousandeyes.removes``
+``thousandeyes.remove``
 ----------------
 
 Ensures all ThousandEyes services, config files and packages are removed.
