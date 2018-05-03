@@ -1,0 +1,17 @@
+thousandeyes:
+  lookup:
+    services:
+      agent: te-agent
+  agent:
+    config:
+      log-path: /var/log
+      log-file-size: 10
+      log-level: DEBUG
+      num-log-files: 13
+      account-token: '<account-token>'
+      proxy-type: DIRECT
+      proxy-location: ' '
+      proxy-user: ' '
+      proxy-pass: ' '
+      proxy-bypass-list: ' '
+      crash-reports: 1

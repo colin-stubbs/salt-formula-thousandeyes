@@ -1,0 +1,25 @@
+{% import_yaml 'thousandeyes/defaults.yaml' as default_settings %}
+
+{% set os_family_map = salt['grains.filter_by']({
+    'default': {
+      'pkgs': [ 'te-agent', 'te-agent-utils', ],
+      'pkgs_browserbot': [ 'te-browserbot', ],
+      'files': {
+        'agent_config': '/etc/te-agent.cfg',
+      },
+      'services': {
+        'agent': 'te-agent',
+        'xvfb': 'te-xvfb',
+        'browserbot': 'te-browserbot'
+      },
+    },
+  }, grain='os_family', default='default', merge=salt['pillar.get']('thousandeyes:lookup')) %}
+
+{% do default_settings.thousandeyes.lookup.update(os_family_map) %}
+
+{% set thousandeyes_settings = salt['pillar.get'](
+    'thousandeyes',
+    default=default_settings.thousandeyes,
+    merge=True,
+  )
+%}
